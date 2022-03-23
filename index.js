@@ -20,9 +20,9 @@ const authorization = (req, res, next) => {
         return res.status(403).sendFile(__dirname + '/views/403.html');
     }
     try {
-        const bdata = jwt.verify(token, "KEY");
-        req.userId = bdata.id;
-        req.userRole = bdata.role;
+        const data = jwt.verify(token, "KEY");
+        req.userId = data.id;
+        req.userRole = data.role;
         return next();
     } catch {
         return res.sendStatus(403);
